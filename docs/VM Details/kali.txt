@@ -1,0 +1,11 @@
+hostname: kali
+
+domain name: homelab.net
+
+real name: Security Admin
+
+username: secadmin1
+
+password: S@vvy55!
+
+time zone: EST
