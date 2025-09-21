@@ -14,6 +14,16 @@ if [ "$answer" == "yes" ]; then
 	
 	if mount -t fuse.vmhgfs-fuse ".host:/$sharename" "$mountpoint" -o allow_other; then 
 		echo -e "\n"$sharename" was successfully mounted to $mountpoint!"
+
+		fstab_line=".host:/$sharename $mountpoint fuse.vmhgfs-fuse allow_other 0 0"
+
+		if ! grep -Fxq "$fstab_line" /etc/fstab; then
+			echo "Adding entry to /etc/fstab..."
+			echo "$fstab_line" | sudo tee -a /etc/fstab > /dev/null
+			echo "fstab updated. This mount will now persist after reboots."
+		else
+			echo "fstab already contains this entry."
+		fi
 	else
 		echo -e "\nFailed to mount. Please check the folder name and VMWare 'Shared Folders' settings"
 	fi
