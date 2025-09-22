@@ -1,0 +1,20 @@
+
+If SCAP scans are hanging:
+---------------------------
+1) Install required packages
+
+sudo dnf install aide audit rsyslog openscap-scanner scap-security-guide -y
+
+2) Make sure auditd is running
+ 
+sudo systemctl enable auditd --now
+sudo systemctl status auditd
+
+3) Clean up temp files
+
+sudo rm -rf /tmp/oscap*
+sudo rm -rf /tmp/runtime-root
+
+4) Run a minimal test scan to ensure the SCAP tool is not bugging
+
+5) Retry the scan
