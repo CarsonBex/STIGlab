@@ -1,3 +1,7 @@
+Using SCC with STIGViewer Write-Up
+----------------------------------
+
+
 Prerequisites:
 *Installed SCAP benchmark STIG file from cyber.mil
 *File is verified to match system version
@@ -33,4 +37,13 @@ POST-SCAN
 
 To view HTML results, click View Results, then All Settings to analyze your results in an HTML page. This will show a compliance score percentage and all of your pass or fails, each with a hyperlink that takes you to more details.
 
+After viewing scan results, you can now move onto STIGViewer. After opening STIGViewer you can import the SCC scan by first clicking File ---> Import STIG, and importing the manual STIG file you downloaded from public.cyber.mil that correlates with your system.
+Next, select Checklist --> Create Checklist - Check Marked STIG(s).
+Lastly, select Import --> XCCDF Results File then navigate to the directory of which your SCC results file was saved and click Open. The common directory location is:
+/home/<user>/SCC/Sessions/<date-of-scan/Results/SCAP/XML/<file>.xml
 
+After importing the XCCDF Results file into STIGViewer, you can now view the SCC scan results and review the findings. 
+
+ATTENTION: Validating scan results is important. SCC is not perfect, and it could mislabel a rule due to quirks, outdated benchmarks, or false positives. 
+
+Next, you are going to want to fix the failed findings, whether it be with patching, reconfiguring, or deploying scripts.
