@@ -1,0 +1,36 @@
+Prerequisites:
+*Installed SCAP benchmark STIG file from cyber.mil
+*File is verified to match system version
+*SCC is ran with sudo privileges
+*SELinux and/or firewall might need to be temporarily disabled if they interfere with scans
+
+
+After opening the SCAP Compliance Checker tool, first begin by selecting the data stream that describes the system that you are applying the STIG to. These datastreams are commonly in .xml or .xccdf.xml format.
+
+Then select the profile: This might be CAT_I_only, Disable_Slow_Rules, or a MAC value with a correlating classification. If you're not interested in checking CAT I rules only or skipping the rules that are known to be time consuming (Disable_Slow_Rules profile), you will want to choose the profile that has the MAC and classification level that best aligns with your system. 
+
+The MAC (Mission Assurance Category) levels, 1, 2, and 3, go as follows: 
+
+MAC I - Loss is unnacceptable, system is mission critical
+MAC II - Loss is difficult to tolerate, system is highly important
+MAC III - Loss is tolerable, system is used for day-to-day operations
+
+The profile classification levels correlate to government classification levels as follows:
+
+Classified - Any system classified as Confidential, Secret, or Top Secret
+Sensitive - Any system classified as CUI
+Public - Any system that is Unclassified (UUI)
+
+After selecting the profile, if you have any deviations/waivers that have been approved, click the deviations button, select or import the applicable rules, and enter in the required information.
+
+Next, click the Install button under the Content tab, then 'Select Content File(s) to Install. Locate and select the SCAP benchmark file within your root directory then click Install. This updates your scan to take in the new STIG rules that did not ship out with the SCC version that you have.
+
+Lastly, chose the type of scan you would like to run, whether it be local, remote, or on a Cisco network device, then start the scan.
+
+The line above 'Log' in the bottom-middle of your screen displays the scans progress. The output will tell you when the review is complete. It will also give you the directory for which your scan results and log files were placed in.
+
+POST-SCAN
+
+To view HTML results, click View Results, then All Settings to analyze your results in an HTML page. This will show a compliance score percentage and all of your pass or fails, each with a hyperlink that takes you to more details.
+
+
